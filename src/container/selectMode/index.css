@@ -1,11 +1,11 @@
-.game_card {
-    border-width: 0.5em;
+.button_mode{
+    font-size: 1.5em;
+    border-width: 0.1em;
     border-color: black;
     border-style: solid;
-    padding: 1em;
-    min-height: 300px;
-    min-width: 300px;
-    display: flex;
+    padding: 0.5em;
     border-radius: 0.5em;
-    
+}
+.button_mode:hover{
+    cursor:pointer;
 }

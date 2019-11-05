@@ -1,5 +1,5 @@
 
-import { SCORE_PUSH, GAME_REFRESH } from '../actions'
+import { SCORE_PUSH, SCORE_REFRESH } from '../actions'
 
 
 let initialState = {
@@ -16,7 +16,7 @@ export const scoreReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             }
-        case GAME_REFRESH:
+        case SCORE_REFRESH:
             return initialState
         default:
             return state

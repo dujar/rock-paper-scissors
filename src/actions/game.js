@@ -1,6 +1,5 @@
 export const GAME_SWITCH = "@@game/GAME_SWITCH"
 export const GAME_NEW = "@@game/GAME_NEW"
-export const GAME_REFRESH = "@@game/GAME_REFRESH"
 export const GAME_MODE = "@@game/GAME_MODE"
 export const GAME_PROCESS_RESULT = "@@game/GAME_PROCESS_RESULT"
 export const GAME_PROCESS_TIMER = "@@game/GAME_PROCESS_TIMER"

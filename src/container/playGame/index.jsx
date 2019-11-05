@@ -3,7 +3,7 @@ import { SelectMove } from '../selectMove'
 import { YOU_VS_COMPUTER, resetGame } from '../../actions'
 import { connect } from 'react-redux'
 import { TrackScore } from '../../component'
-import { switchGameMode, startNewGame } from '../../actions'
+import { switchGameMode, startNewGame, refreshScore } from '../../actions'
 import './index.css'
 class PlayGameComponent extends React.Component {
 
@@ -15,6 +15,9 @@ class PlayGameComponent extends React.Component {
     newGame = () => {
         this.props.dispatch(resetGame())
         this.props.dispatch(startNewGame())
+    }
+    refreshScore = () => {
+        this.props.dispatch(refreshScore())
     }
     render() {
         let { mode, result, score, action_player, action_opponent, message, timer, match } = this.props
@@ -44,10 +47,13 @@ class PlayGameComponent extends React.Component {
                 {
                     !timer && (
                         <div className={'new_game_button_container'}>
-                            <button onClick={this.handleGameSwitch}>
+                            <button className={'button_game'} onClick={this.handleGameSwitch}>
                                 SWITCH GAME
                         </button>
-                            <button onClick={this.newGame}>
+                            <button className={'button_game'} onClick={this.refreshScore}>
+                                REFRESH SCORE
+                         </button>
+                            <button className={'button_game'} onClick={this.newGame}>
                                 NEW GAME
                         </button>
                         </div>)

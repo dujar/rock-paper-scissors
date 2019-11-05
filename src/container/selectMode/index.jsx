@@ -11,14 +11,13 @@ class SelectModeComponent extends React.Component {
         this.props.dispatch(selectMode(mode))
     }
     render() {
-        let { message } = this.props
 
         return (
             <div className={"frame_wrapper"}>
-                <button onClick={() => this.handleModeSelection(YOU_VS_COMPUTER)}>
-                    {message ? message : 'YOU VS COMPUTER'}
+                <button className={'button_mode'} onClick={() => this.handleModeSelection(YOU_VS_COMPUTER)}>
+                    YOU VS COMPUTER
                 </button>
-                <button onClick={() => this.handleModeSelection(COMPUTER_VS_COMPUTER)}>
+                <button className={'button_mode'} onClick={() => this.handleModeSelection(COMPUTER_VS_COMPUTER)}>
                     COMPUTER VS COMPUTER
                 </button>
             </div>

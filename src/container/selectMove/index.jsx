@@ -18,9 +18,9 @@ const Image = (props) => {
         src = paperPath
     }
 
-    return (
-        <img src={src} width="100" height="100" onClick={props.onClick} />
-    )
+    return !props.selected
+        ? <img src={src} width="100" height="100" onClick={props.onClick} className={'image'} />
+        : <img src={src} width="100" height="100" onClick={props.onClick} />
 }
 
 class SelectMoveComponent extends React.Component {
@@ -33,9 +33,9 @@ class SelectMoveComponent extends React.Component {
             <div className={'timer_container_move'}>
                 <Timer />
                 <div>
-                    {selected === ROCK && <Image rock />}
-                    {selected === PAPER && <Image paper />}
-                    {selected === SCISSORS && <Image scissors />}
+                    {selected === ROCK && <Image rock selected />}
+                    {selected === PAPER && <Image paper selected />}
+                    {selected === SCISSORS && <Image scissors selected />}
                 </div>
 
             </div>
@@ -48,9 +48,9 @@ class SelectMoveComponent extends React.Component {
                 </div>
                     :
                     <div>
-                        {selected === ROCK && <Image rock />}
-                        {selected === PAPER && <Image paper />}
-                        {selected === SCISSORS && <Image scissors />}
+                        {selected === ROCK && <Image rock selected />}
+                        {selected === PAPER && <Image paper selected />}
+                        {selected === SCISSORS && <Image scissors selected />}
                     </div>
                 }
 

@@ -36,6 +36,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    border-width: 0.1em;
+    border-color: black;
+    border-style: solid;
+    padding: 0.5em;
+    border-radius: 0.5em;
 }
 
 .divider{
@@ -43,14 +49,14 @@
     height: 0.5em;
     background-color: black;
     border-radius: 1em;
+    width: 100%;
     margin: 1em;
 }
-.divider:after{
-    content:'';
-}
+
 
 .mode_title{
     padding: 0.5em;
+    font-size: 1.5em;
 }
 .game_count{
     padding:0.5em;
@@ -72,4 +78,17 @@
     font-size: 1.5em;
     background-color: red;
     width:80%;
+}
+
+.button_game{
+    font-size: 1.2em;
+    padding: 0.2em;
+    border-width: 0.1em;
+    border-color: black;
+    border-style: solid;
+    border-radius: 0.2em;
+    width: 100px;
+}
+.button_game:hover{
+    cursor: pointer;
 }
