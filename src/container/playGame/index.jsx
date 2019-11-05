@@ -4,6 +4,7 @@ import { YOU_VS_COMPUTER, resetGame } from '../../actions'
 import { connect } from 'react-redux'
 import { TrackScore } from '../../component'
 import { switchGameMode, startNewGame } from '../../actions'
+import './index.css'
 class PlayGameComponent extends React.Component {
 
     handleGameSwitch = () => {
@@ -16,22 +17,33 @@ class PlayGameComponent extends React.Component {
         this.props.dispatch(startNewGame())
     }
     render() {
-        let { mode, score, action_player, action_opponent, message, timer, match } = this.props
+        let { mode, result, score, action_player, action_opponent, message, timer, match } = this.props
         return (
-            <div>
-                {mode.split('_').join(' ')}
-                <TrackScore mode={mode} score={score} />
-                <div>GAME  NUMBER: {match}</div>
+            <div className={"game_card"}>
+                <div className={'top_container'}>
+                    <div className="mode_title">
+                        {mode.split('_').join(' ')}
+                    </div>
+                    <TrackScore mode={mode} score={score} />
+                    <div className="game_count">GAME  NUMBER: <span className={"game_number"}>{match}</span></div>
+                </div>
 
-                <div>
+                <div className={'move_selection_container'}>
                     <SelectMove computer {...action_opponent && { selected: action_opponent }} />
-                    <div />
-                    {message && message}
+                    <div className={'divider'} />
+                    {result &&
+                        <React.Fragment>
+                            <div className={"message_result_" + result.toLowerCase()}>
+                                {message && message}
+                            </div>
+                            <div className={'divider'} />
+                        </React.Fragment>
+                    }
                     <SelectMove {...mode === YOU_VS_COMPUTER ? { you: true } : { computer: true }} {...action_player && { selected: action_player }} />
                 </div>
                 {
                     !timer && (
-                        <div>
+                        <div className={'new_game_button_container'}>
                             <button onClick={this.handleGameSwitch}>
                                 SWITCH GAME
                         </button>
@@ -52,6 +64,7 @@ export const PlayGame = connect(state => {
         mode: state.game.mode,
         match: state.game.match,
         score: state.score,
+        result: state.game.result,
         message: state.game.message,
         action_player: state.game.action_player,
         action_opponent: state.game.action_opponent,

@@ -3,6 +3,7 @@ import { ROCK, PAPER, SCISSORS, playerGameAction } from '../../actions'
 import { paperPath, rockPath, scissorPath } from '../../assets'
 import { Timer } from '../timer'
 import { connect } from 'react-redux'
+import './index.css'
 const Image = (props) => {
 
     let src;
@@ -29,7 +30,7 @@ class SelectMoveComponent extends React.Component {
     render() {
         let { selected, computer, timer } = this.props
         return computer ?
-            <div>
+            <div className={'timer_container_move'}>
                 <Timer />
                 <div>
                     {selected === ROCK && <Image rock />}

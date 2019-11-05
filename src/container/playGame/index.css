@@ -1,0 +1,75 @@
+.game_card {
+    border-width: 0.5em;
+    border-color: black;
+    border-style: solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    min-height: 300px;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.top_container{
+    border-width: 0.1em;
+    border-color: black;
+    border-style: solid;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.new_game_button_container{
+    display: flex;
+    justify-content: space-around;
+    border-width: 0.1em;
+    border-color: black;
+    border-style: solid;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin-top: 0.5em;
+}
+
+.move_selection_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider{
+
+    height: 0.5em;
+    background-color: black;
+    border-radius: 1em;
+    margin: 1em;
+}
+.divider:after{
+    content:'';
+}
+
+.mode_title{
+    padding: 0.5em;
+}
+.game_count{
+    padding:0.5em;
+}
+.game_number{
+    font-size: 1.5em;
+}
+.message_result_win {
+    font-size: 1.5em;
+    background-color: green;
+    width:80%;
+}
+.message_result_draw {
+    font-size: 1.5em;
+    background-color: orange;
+    width:80%;
+}
+.message_result_lose{
+    font-size: 1.5em;
+    background-color: red;
+    width:80%;
+}

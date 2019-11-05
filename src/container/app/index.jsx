@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import { SelectMode } from '../selectMode'
 import { PlayGame } from '../playGame'
 import { NewGameAnnouncement } from '../../component'
+
+import './index.css'
 class AppContainer extends React.Component {
 
     render() {
         let { phase, new_game_timer } = this.props
         return (
-            <div>
+            <div className={'container'}>
                 {phase == 0 && <SelectMode />}
                 {phase == 1 && <PlayGame />}
                 {phase == 2 && <NewGameAnnouncement timer={new_game_timer} />}

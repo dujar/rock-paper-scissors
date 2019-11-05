@@ -4,7 +4,7 @@ import {
     GAME_PLAYER_ACTION, GAME_OPPONENT_ACTION, GAME_SET_WINNER, GAME_MESSAGE, DRAW, WIN, LOSE, YOU_VS_COMPUTER,
     pushScore,
     SCORE_START,
-    GAME_PHASE, GAME_NEW_PROCESS_TIMER, GAME_NEW_TIMER_TICK
+    GAME_PHASE, GAME_NEW_PROCESS_TIMER, GAME_NEW_TIMER_TICK, processGameTimer
 } from '../actions'
 
 let MOVES_ALLOWED = [ROCK, SCISSORS, PAPER]
@@ -18,6 +18,7 @@ export const gameLogic = createLogic({
         let result
         let action_player
         let action_opponent
+        let payload
         let mode = getState().game.mode;
 
         if (mode === YOU_VS_COMPUTER) {
@@ -40,48 +41,50 @@ export const gameLogic = createLogic({
             })
         }
 
-        switch (action_player) {
-            case ROCK:
-                switch (action_opponent) {
-                    case ROCK:
-                        result = DRAW;
-                        break;
-                    case SCISSORS:
-                        result = WIN;
-                        break
-                    case PAPER:
-                        result = LOSE
-                        break;
-                }
-                break;
-            case SCISSORS:
-                switch (action_opponent) {
-                    case ROCK:
-                        result = LOSE;
-                        break;
-                    case SCISSORS:
-                        result = DRAW;
-                        break
-                    case PAPER:
-                        result = WIN
-                        break;
-                }
-                break;
-            case PAPER:
-                switch (action_opponent) {
-                    case ROCK:
-                        result = WIN;
-                        break;
-                    case SCISSORS:
-                        result = LOSE;
-                        break
-                    case PAPER:
-                        result = DRAW
-                        break;
-                }
-                break;
+        if (action_player) {
+            switch (action_player) {
+                case ROCK:
+                    switch (action_opponent) {
+                        case ROCK:
+                            result = DRAW;
+                            break;
+                        case SCISSORS:
+                            result = WIN;
+                            break
+                        case PAPER:
+                            result = LOSE
+                            break;
+                    }
+                    break;
+                case SCISSORS:
+                    switch (action_opponent) {
+                        case ROCK:
+                            result = LOSE;
+                            break;
+                        case SCISSORS:
+                            result = DRAW;
+                            break
+                        case PAPER:
+                            result = WIN
+                            break;
+                    }
+                    break;
+                case PAPER:
+                    switch (action_opponent) {
+                        case ROCK:
+                            result = WIN;
+                            break;
+                        case SCISSORS:
+                            result = LOSE;
+                            break
+                        case PAPER:
+                            result = DRAW
+                            break;
+                    }
+                    break;
+            }
         }
-        let payload
+
 
         if (mode === YOU_VS_COMPUTER) {
             payload = 'YOU ' + result;
@@ -94,15 +97,17 @@ export const gameLogic = createLogic({
         }
         if (action_player === false) {
             payload = 'YOU LOSE BY DEFAULT!'
+            result = LOSE
         }
 
-        dispatch({
-            type: GAME_MESSAGE,
-            payload
-        })
+
         dispatch({
             type: GAME_SET_WINNER,
             payload: result
+        })
+        dispatch({
+            type: GAME_MESSAGE,
+            payload
         })
 
         dispatch({ type: SCORE_START })
@@ -165,6 +170,8 @@ export const newGameTimerLogic = createLogic({
                 dispatch({ type: GAME_PHASE, payload: 1 })
                 dispatch({ type: GAME_NEW_TIMER_TICK, payload: false })
                 clearInterval(newGametimerInterval)
+                dispatch(processGameTimer())
+
                 done()
             } else {
                 dispatch({ type: GAME_NEW_TIMER_TICK, payload: timing })

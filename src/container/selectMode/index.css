@@ -1,0 +1,11 @@
+.game_card {
+    border-width: 0.5em;
+    border-color: black;
+    border-style: solid;
+    padding: 1em;
+    min-height: 300px;
+    min-width: 300px;
+    display: flex;
+    border-radius: 0.5em;
+    
+}

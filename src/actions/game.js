@@ -42,12 +42,18 @@ export const advanceToGamePhase = (payload) => ({
     type: GAME_PHASE,
     payload
 })
-
-
-export const selectMode = (payload) => ({
-    type: GAME_MODE,
-    payload
+export const processGameTimer = () => ({
+    type: GAME_PROCESS_TIMER
 })
+
+export const selectMode = (payload) => dispatch => {
+
+    dispatch({
+        type: GAME_MODE,
+        payload
+    })
+    dispatch(processGameTimer())
+}
 export const switchGameMode = () => (dispatch, getState) => {
 
     let mode = getState().game.mode;
@@ -67,6 +73,9 @@ export const switchGameMode = () => (dispatch, getState) => {
         type: GAME_SWITCH,
         payload: mode
     })
+    dispatch(processGameTimer())
+
+
 }
 
 export const processGameResult = () => ({ type: GAME_PROCESS_RESULT })
@@ -75,11 +84,10 @@ export const processGameResult = () => ({ type: GAME_PROCESS_RESULT })
 export const newGame = () => (dispatch, getState) => {
     let match = getState().game.match + 1;
     dispatch({ type: GAME_NEW, payload: match })
+
 }
 
-export const processGameTimer = () => ({
-    type: GAME_PROCESS_TIMER
-})
+
 
 export const startNewGame = () => (dispatch, getState) => {
 
@@ -87,6 +95,7 @@ export const startNewGame = () => (dispatch, getState) => {
     dispatch({ type: GAME_NEW, payload: match })
 
     dispatch({ type: GAME_NEW_PROCESS_TIMER })
+
 
 }
 

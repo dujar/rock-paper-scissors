@@ -1,21 +1,16 @@
 import React from 'react'
 import { processGameTimer } from '../../actions'
 import { connect } from 'react-redux'
-
+import './index.css'
 class TimerComponent extends React.Component {
-    constructor(props) {
-        super(props)
-        props.dispatch(processGameTimer())
-    }
-
 
     render() {
         let { timer } = this.props
-        return (
-            <div>
-                {timer}
-            </div>
-        )
+        return timer ? (
+            <div className={'time_container'}>
+                <h1>{timer}</h1>
+            </div>) : null
+
     }
 }
 

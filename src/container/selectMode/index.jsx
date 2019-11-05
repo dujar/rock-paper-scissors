@@ -3,6 +3,7 @@ import React from 'react'
 import { selectMode, YOU_VS_COMPUTER, COMPUTER_VS_COMPUTER, advanceToGamePhase } from '../../actions'
 import { connect } from 'react-redux'
 
+import './index.css'
 class SelectModeComponent extends React.Component {
 
     handleModeSelection = (mode) => {
@@ -13,7 +14,7 @@ class SelectModeComponent extends React.Component {
         let { message } = this.props
 
         return (
-            <div>
+            <div className={"frame_wrapper"}>
                 <button onClick={() => this.handleModeSelection(YOU_VS_COMPUTER)}>
                     {message ? message : 'YOU VS COMPUTER'}
                 </button>
@@ -21,6 +22,7 @@ class SelectModeComponent extends React.Component {
                     COMPUTER VS COMPUTER
                 </button>
             </div>
+
         )
     }
 }
@@ -29,6 +31,5 @@ export const SelectMode = connect(state => {
 
     return {
         mode: state.game.mode,
-
     }
 })(SelectModeComponent)

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { YOU_VS_COMPUTER } from '../actions'
 
-
+import './index.css'
 export const TrackScore = (props) => {
 
     let { score, mode } = props
@@ -17,17 +17,17 @@ export const TrackScore = (props) => {
         key_opponent_player = 'computer'
     } else {
         player = 'COMPUTER ONE'
-        opponent_player = 'COMPUTER_TWO'
+        opponent_player = 'COMPUTER TWO'
         key_player = 'computer_one'
         key_opponent_player = 'computer_two'
     }
     return (
-        <div>
-            <div>
-                {player}:{score[key_player]}
+        <div className={'score_container'}>
+            <div className='score'>
+                {player}: <span className={"time_number"}>{score[key_player]}</span>
             </div>
-            <div>
-                {opponent_player}:{score[key_opponent_player]}
+            <div className="score">
+                {opponent_player}: <span className={"time_number"}>{score[key_opponent_player]}</span>
             </div>
         </div>
     )
