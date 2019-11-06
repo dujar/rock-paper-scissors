@@ -52,7 +52,7 @@ class PlayGameComponent extends React.Component {
                         </button>
                             <button className={'button_game'} onClick={this.refreshScore}>
                                 REFRESH SCORE
-                         </button>
+                        </button>
                             <button className={'button_game'} onClick={this.newGame}>
                                 NEW GAME
                         </button>

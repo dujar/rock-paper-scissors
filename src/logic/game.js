@@ -42,47 +42,7 @@ export const gameLogic = createLogic({
         }
 
         if (action_player) {
-            switch (action_player) {
-                case ROCK:
-                    switch (action_opponent) {
-                        case ROCK:
-                            result = DRAW;
-                            break;
-                        case SCISSORS:
-                            result = WIN;
-                            break
-                        case PAPER:
-                            result = LOSE
-                            break;
-                    }
-                    break;
-                case SCISSORS:
-                    switch (action_opponent) {
-                        case ROCK:
-                            result = LOSE;
-                            break;
-                        case SCISSORS:
-                            result = DRAW;
-                            break
-                        case PAPER:
-                            result = WIN
-                            break;
-                    }
-                    break;
-                case PAPER:
-                    switch (action_opponent) {
-                        case ROCK:
-                            result = WIN;
-                            break;
-                        case SCISSORS:
-                            result = LOSE;
-                            break
-                        case PAPER:
-                            result = DRAW
-                            break;
-                    }
-                    break;
-            }
+            result = getWinner(action_player, action_opponent)
         }
 
 
@@ -180,3 +140,50 @@ export const newGameTimerLogic = createLogic({
 
     }
 })
+
+
+export function getWinner(action_player, action_opponent) {
+    let result
+    switch (action_player) {
+        case ROCK:
+            switch (action_opponent) {
+                case ROCK:
+                    result = DRAW;
+                    break;
+                case SCISSORS:
+                    result = WIN;
+                    break
+                case PAPER:
+                    result = LOSE
+                    break;
+            }
+            break;
+        case SCISSORS:
+            switch (action_opponent) {
+                case ROCK:
+                    result = LOSE;
+                    break;
+                case SCISSORS:
+                    result = DRAW;
+                    break
+                case PAPER:
+                    result = WIN
+                    break;
+            }
+            break;
+        case PAPER:
+            switch (action_opponent) {
+                case ROCK:
+                    result = WIN;
+                    break;
+                case SCISSORS:
+                    result = LOSE;
+                    break
+                case PAPER:
+                    result = DRAW
+                    break;
+            }
+            break;
+    }
+    return result
+}

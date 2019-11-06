@@ -72,8 +72,6 @@ export const switchGameMode = () => (dispatch, getState) => {
         type: GAME_SWITCH,
         payload: mode
     })
-    dispatch(processGameTimer())
-
 
 }
 

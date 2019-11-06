@@ -37,7 +37,6 @@ class SelectMoveComponent extends React.Component {
                     {selected === PAPER && <Image paper selected />}
                     {selected === SCISSORS && <Image scissors selected />}
                 </div>
-
             </div>
             :
             <div>
